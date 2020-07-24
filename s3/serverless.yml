@@ -1,0 +1,20 @@
+service: python-s3
+
+provider:
+  name: aws
+  runtime: python3.8
+  role: ${file(env.yml):ROLE}
+  environment: ${file(env.yml)}
+
+plugins:
+  - serverless-offline-python
+
+functions:
+  crearBucket:
+    handler: api/crearBucket.handler
+  listarBucket:
+    handler: api/listarBuckets.handler
+  listarArchivos:
+    handler: api/listarArchivos.handler
+  eliminarBucket:
+    handler: api/eliminarBucket.handler
